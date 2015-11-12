@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 // See http://mongoosejs.com/docs/schematypes.html
 
-var sensorSchema = new Schema({
+var temperatureSchema = new Schema({
 	value: String,
 	dateAdded : { type: Date, default: Date.now },
 })
 
-// export 'Sensor' model so we can interact with it in other files
-module.exports = mongoose.model('Sensor',sensorSchema);
+// export 'Temperature' model so we can interact with it in other files
+module.exports = mongoose.model('Temperature',temperatureSchema);
