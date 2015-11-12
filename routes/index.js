@@ -24,7 +24,7 @@ router.get('/', function(req, res) {
 
 router.post('/api/sensor/write', function(req,res){
     console.log(req.body);
-    
+    res.json(req.body);
 })
 
 
