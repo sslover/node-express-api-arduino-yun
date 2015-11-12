@@ -4,28 +4,27 @@
 #include <HttpClient.h>
 #include <Mailbox.h>
 #include <Process.h>
-#include <YunClient.h>
-#include <YunServer.h>
+#include <BridgeClient.h>
+#include <BridgeServer.h>
 
 #include <SPI.h>
-//#include <Ethernet.h>
 
+// http://54.83.205.153/
+IPAddress server(54,83,205,153); // your static IP goes here
+BridgeClient client;
 
-//byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress server(10,33,66,149); // 
-//EthernetClient client;
-YunClient client;
-
-int temp = 64;
+// some sensor value we want to store; for example, temperature
+// static here, but would be changing based on a sensor
+int temperature = 64;
 
 void setup()
 {
-  //Ethernet.begin(mac);
+
   Bridge.begin();
   Serial.begin(9600);
-  String parametri ="";
+  String parameter ="";
   //delay(5000);
-  //Serial.println("XXXXXXXXX");
+  Serial.println("XXXXXXXXX");
 
   delay(2500);
   Serial.println("connecting...");
@@ -34,20 +33,21 @@ void setup()
   {
     Serial.println("connected");
     delay(2500);
-    parametri="rem_temp="+String(temp);
-    
-    client.println("POST /prova/inserisci.php HTTP/1.1");
+    // replace temperature with your parameter
+    parameter="temperature="+String(temperature);
+
+    // put your API route here
+    client.println("POST /api/sensor/write HTTP/1.1");
     client.print("Content-length:");
-    client.println(parametri.length());
-    Serial.println(parametri.length());
-    Serial.println(parametri);
+    client.println(parameter.length());
+    Serial.println(parameter.length());
+    Serial.println(parameter);
     client.println("Connection: Close");
-    client.println("Host:10.33.66.149");
+    // put your IP here
+    //client.println("Host:54.83.205.153");
     client.println("Content-Type: application/x-www-form-urlencoded");
     client.println();
-    client.println(parametri);     //Set Remote temperture to ___
-    //client.print(temp);
-    //client.println("}");
+    client.println(parameter); 
   } 
     else 
     {
