@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 // our db model
-var Animal = require("../models/model.js");
+var Sensor = require("../models/model.js");
 
 /**
  * GET '/'
@@ -25,6 +25,8 @@ router.get('/', function(req, res) {
 router.post('/api/sensor/write', function(req,res){
     console.log(req.body);
     res.json(req.body);
+
+    var sensorValue = req.body.
 })
 
 
