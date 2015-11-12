@@ -1,5 +1,5 @@
 {
-  "name": "node-express-api-boilerplate",
+  "name": "node-express-api-arduino-yun",
   "version": "0.0.1",
   "private": true,
   "scripts": {

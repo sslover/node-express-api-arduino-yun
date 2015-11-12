@@ -22,4 +22,12 @@ router.get('/', function(req, res) {
   res.json(jsonData)
 });
 
+router.post('/api/sensor/write', function(req,res){
+    console.log(req.body);
+    
+})
+
+
+
+
 module.exports = router;
